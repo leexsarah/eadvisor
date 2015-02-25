@@ -1,0 +1,42 @@
+digraph titangraph {
+    338 [label = "MATH 338" shape = rect, style = rounded,  color = blue];
+    335 [label = "CPSC 335" shape = rect, style = rounded,  color = blue];
+    311 [label = "CPSC 311" shape = rect, style = rounded,  color = blue];
+    315 [label = "CPSC 315" shape = rect, style = rounded,  color = blue];
+    332 [label = "CPSC 332" shape = rect, style = rounded,  color = blue];
+    131 [label = "CPSC 131" shape = rect, style = rounded,  color = blue];
+    254 [label = "CPSC 254" shape = rect, style = rounded,  color = blue];
+    1502 [label = "MATH 150B" shape = rect, style = rounded,  color = blue];
+    323 [label = "CPSC 323" shape = rect, style = rounded,  color = blue];
+    1501 [label = "MATH 150A" shape = rect, style = rounded,  color = blue];
+    362 [label = "CPSC 362" shape = rect, style = rounded,  color = blue];
+    301 [label = "CPSC 301" shape = rect, style = rounded,  color = blue];
+    440 [label = "CPSC 440" shape = rect, style = rounded,  color = blue];
+    2701 [label = "MATH 270A " shape = rect, style = rounded,  color = blue];
+    2702 [label = "MATH 270B " shape = rect, style = rounded,  color = blue];
+    120 [label = "CPSC 120" shape = rect, style = rounded,  color = blue];
+    121 [label = "CPSC 121" shape = rect, style = rounded,  color = blue];
+    240 [label = "CPSC 240" shape = rect, style = rounded,  color = blue];
+    101 [label = "ENG 101" shape = rect, style = rounded,  color = blue];
+    223 [label = "CPSC 223" shape = rect, style = rounded,  color = blue];
+    481 [label = "CPSC 481" shape = rect, style = rounded,  color = blue];
+    471 [label = "CPSC 471" shape = rect, style = rounded,  color = blue];
+    351 [label = "CPSC 351" shape = rect, style = rounded,  color = blue];
+
+
+    101  -> {311}
+    311  -> {315 362}
+    2701 -> {2702}
+    2702 -> {335}
+    1501 -> {1502}
+    1502 -> {338}
+    338  -> {335}
+    120 -> {121}
+    121 -> {131} 
+    131 -> {223 254 301 311 332 240} 
+    240 -> {440}
+    254 -> {351}
+    351 -> {471}
+    301 -> {323 335}
+    335 -> {481}
+}
