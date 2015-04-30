@@ -263,3 +263,19 @@ else:
 	
 	parse.close()	
 	parseinprogress()
+	
+	print 'GE\n'
+	for i in GE_list:
+		print i
+	print 'take\n'
+	for j in NEED_list:
+		print j
+	print 'in-p\n'
+	for k in IP_list:
+		print k
+	print 'units\n'
+	for l in GRAD_list:
+		print l
+	print 'name\n'
+	for m in STU_info:
+		print m
