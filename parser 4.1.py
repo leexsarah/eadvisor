@@ -51,7 +51,7 @@ def printclasslist():
 				findinprogress()
 				return 0
 			else:
-        take_c=take_c + (nextline[11:])
+			        take_c=take_c + (nextline[11:])
 
 # reads the open file [parse] for any classes with 'IP' flag
 # maintains the calling file position when finished
