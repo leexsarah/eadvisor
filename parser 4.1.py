@@ -24,9 +24,9 @@ def checkforcomplete(text):
 	text_string = findlinewith(text)
 	if (text_string != -1):
 		if (text_string.find('NO',0,5) > -1):
-	return -1
+			return -1
 		elif (text_string.find('-',0,5) > -1):
-	return 0
+			return 0
 		else:
 			return 1
 	else:
