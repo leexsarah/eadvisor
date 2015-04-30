@@ -24,11 +24,11 @@ def checkforcomplete(text):
 	text_string = findlinewith(text)
 	if (text_string != -1):
 		if (text_string.find('NO',0,5) > -1):
-      return -1
+	return -1
 		elif (text_string.find('-',0,5) > -1):
-      return 0
+	return 0
 		else:
-		  return 1
+			return 1
 	else:
 		return -2
 
@@ -72,27 +72,27 @@ def findinprogress():
 def parseinprogress():
 	str_TAKE = take_c.replace('\n', ' ').replace(',',' ')
 
-  re_subs = re.compile('([A-Z][A-Z][A-Z][A-Z]?)')
+	re_subs = re.compile('([A-Z][A-Z][A-Z][A-Z]?)')
 	re_nums = re.compile('\d\d\d[A-Z|\d]?')
 	
 	re_list = re_subs.split(str_TAKE)
 
-  #take care of "OR" expression
+	#take care of "OR" expression
 	re_OR=''
-  re_OR_title = ''
+	re_OR_title = ''
 
 	for i in range(len(re_list)):
-    if(re_list[i].find('OR')>-1):
-      re_OR = re_list[i]
-      re_OR_title = re_list[i-1]+' '
-      re_list[i] = '***'
-      re_list[i-1]='***'
+		if(re_list[i].find('OR')>-1):
+			re_OR = re_list[i]
+			re_OR_title = re_list[i-1]+' '
+			re_list[i] = '***'
+			re_list[i-1]='***'
 
-  OR_nums=re_nums.findall(re_OR)
+	OR_nums=re_nums.findall(re_OR)
         
-  for e in OR_nums:
-    temp = re_OR_title+' '+e
-    re_OR_list.append(temp)
+	for e in OR_nums:
+		temp = re_OR_title+' '+e
+		re_OR_list.append(temp)
 	
 	for i in range(1,len(re_list),2):
 		c_subject = re_list[i]
@@ -100,23 +100,23 @@ def parseinprogress():
 		for k in c_numbers:
 			take_list.append(c_subject +' '+k )
 
-  # use set to delete in progress courses from take courses
-  # write final take course list to TAKE2.txt file
-  take = Set(take_list)
-  IP = Set(ip_c)
-  OR = Set(re_OR_list)
-  final_take = take.difference(IP)
+	# use set to delete in progress courses from take courses
+	# write final take course list to TAKE2.txt file
+	take = Set(take_list)
+	IP = Set(ip_c)
+	OR = Set(re_OR_list)
+	final_take = take.difference(IP)
 
-  if (len(IP&OR)>1):
-    for a in final_take:
-      NEED_list.append(a)
-  else:
-    for a in final_take:
-      NEED_list.append(a)
-      NEED_list.append(re_OR_title+re_OR)
+	if (len(IP&OR)>1):
+		for a in final_take:
+			NEED_list.append(a)
+	else:
+		for a in final_take:
+			NEED_list.append(a)
+			NEED_list.append(re_OR_title+re_OR)
 
-  for x in IP:
-    IP_list.append(x)
+	for x in IP:
+		IP_list.append(x)
 #-----------------------------------------------------------------------
  
 #-----------------------------------------------------------------------
@@ -152,48 +152,48 @@ major_info=major[14:22]
 if (major.find('BS  CPSC') == -1):
 	print('Scan only compatible with Undergrad CS')
 else:
-  STU_info.append(CSUF_id)
-  STU_info.append(name)
-  STU_info.append(major_info)
-  # ----- GENERAL EDUCATION -----
-  if (checkforcomplete('A.  CORE COMPETENCIES') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  if (checkforcomplete('B. SCIENTIFIC INQUIRY') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  if (checkforcomplete('C. ARTS AND HUMANITIES') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  if (checkforcomplete('D. SOCIAL SCIENCES') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  if (checkforcomplete('E. LIFELONG LEARNING') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  if (checkforcomplete('Z.  CULTURAL DIVERSITY') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  # ----- GENERAL EDUCATION UNITS -----
-  if (checkforcomplete('GENERAL EDUCATION RESIDENCE') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  if (checkforcomplete('GENERAL EDUCATION UPPER DIVISION') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  if (checkforcomplete('GENERAL EDUCATION UNITS') == 1):
-	  GE_list.append(‘complete’)
-  else:
-    GE_list.append(‘incomplete’)
-  # ----- COMPUTER SCIENCE CORE -----
+	STU_info.append(CSUF_id)
+	STU_info.append(name)
+	STU_info.append(major_info)
+	# ----- GENERAL EDUCATION -----
+	if (checkforcomplete('A.  CORE COMPETENCIES') == 1):
+		GE_list.append(‘complete’)
+	else:
+		GE_list.append(‘incomplete’)
+	if (checkforcomplete('B. SCIENTIFIC INQUIRY') == 1):
+		GE_list.append(‘complete’)
+  	else:
+		GE_list.append(‘incomplete’)
+	if (checkforcomplete('C. ARTS AND HUMANITIES') == 1):
+		GE_list.append(‘complete’)
+	else:
+		GE_list.append(‘incomplete’)
+	if (checkforcomplete('D. SOCIAL SCIENCES') == 1):
+		GE_list.append(‘complete’)
+	else:
+		GE_list.append(‘incomplete’)
+	if (checkforcomplete('E. LIFELONG LEARNING') == 1):
+		GE_list.append(‘complete’)
+	else:
+		GE_list.append(‘incomplete’)
+	if (checkforcomplete('Z.  CULTURAL DIVERSITY') == 1):
+		GE_list.append(‘complete’)
+	else:
+		GE_list.append(‘incomplete’)
+	# ----- GENERAL EDUCATION UNITS -----
+	if (checkforcomplete('GENERAL EDUCATION RESIDENCE') == 1):
+		GE_list.append(‘complete’)
+	else:
+		GE_list.append(‘incomplete’)
+	if (checkforcomplete('GENERAL EDUCATION UPPER DIVISION') == 1):
+		GE_list.append(‘complete’)
+	else:
+		GE_list.append(‘incomplete’)
+	if (checkforcomplete('GENERAL EDUCATION UNITS') == 1):
+		GE_list.append(‘complete’)
+	else:
+		GE_list.append(‘incomplete’)
+	# ----- COMPUTER SCIENCE CORE -----
 	if (checkforcomplete('COMPUTER SCIENCE CORE COURSES') == -1):
 		if (checkforcomplete('[CPSCLD]') == 0):
 			printclasslist()
@@ -205,61 +205,61 @@ else:
 			printclasslist()
 		if (checkforcomplete('[CPSCBIOLSCI|CPSCBIOLAB]') == 0):
 			printclasslist()
-    if (mode == '1'):
-		  if (checkforcomplete('[CPSC-MG-ELECT]') == 0):
-				printclasslist()
-		elif (mode == '2'):
-			if (checkforcomplete('[CPSC-IE-ELECT]') == 0):
-				printclasslist()
-		elif (mode == '3'):
-			if (checkforcomplete('[CPSC-SE-ELECT]') == 0):
-				printclasslist()
-		elif (mode == '4'):
-			if (checkforcomplete('[CPSC-CT-ELECT]') == 0):
-				printclasslist()
-		elif (mode == '5'):
-			if (checkforcomplete('[CPSC-SC-ELECT]') == 0):
-				printclasslist()
+	if (mode == '1'):
+		if (checkforcomplete('[CPSC-MG-ELECT]') == 0):
+			printclasslist()
+	elif (mode == '2'):
+		if (checkforcomplete('[CPSC-IE-ELECT]') == 0):
+			printclasslist()
+	elif (mode == '3'):
+		if (checkforcomplete('[CPSC-SE-ELECT]') == 0):
+			printclasslist()
+	elif (mode == '4'):
+		if (checkforcomplete('[CPSC-CT-ELECT]') == 0):
+			printclasslist()
+	elif (mode == '5'):
+		if (checkforcomplete('[CPSC-SC-ELECT]') == 0):
+			printclasslist()
 	if (checkforcomplete('UPPER-DIVISION BACCALAUREATE WRITING') == 0):
 		printclasslist()
-  # ----- OVERALL REQUIREMENTS -----
-  if (checkforcomplete('G.P.A. OF ALL COURSES') == 1):
-	  GRAD_list.append(‘complete’)
-  else:
-	  GRAD_list.append(‘incomplete’)
-  if (checkforcomplete('UNIT REQUIREMENTS') == -1):
-    if (checkforcomplete('UNITS EARNED AT CSUF') == 1):
-  	  GRAD_list.append(‘complete’)
-    else:
-  	  GRAD_list.append(‘incomplete’)
-    if (checkforcomplete('CSUF GRADE POINT AVERAGE') == 1):
-  	  GRAD_list.append(‘complete’)
-    else:
-  	  GRAD_list.append(‘incomplete’)
-    if (checkforcomplete('UPPER DIVISION UNITS EARNED') == 1):
-  	  GRAD_list.append(‘complete’)
-    else:
-  	  GRAD_list.append(‘incomplete’)
-    if (checkforcomplete('RESIDENCE UPPER DIVISION UNITS') == 1):
-  	  GRAD_list.append(‘complete’)
-    else:
-  	  GRAD_list.append(‘incomplete’)
-    if (checkforcomplete('MAJOR Residence UPPER DIVISION') == 1):
-  	  GRAD_list.append(‘complete’)
-    else:
-  	  GRAD_list.append(‘incomplete’)
-  if (checkforcomplete('TRANSFER INSTITUTION TOTALS') == 1):
-	  GRAD_list.append(‘complete’)
-  else:
-	  GRAD_list.append(‘incomplete’)
-  if (checkforcomplete('CUMULATIVE NUMBER OF UNITS') == 1):
-	  GRAD_list.append(‘complete’)
-  else:
-	  GRAD_list.append(‘incomplete’)
-  if (checkforcomplete('CUMULATIVE GRADE POINT AVERAGE') == 1):
-	  GRAD_list.append(‘complete’)
-  else:
-	  GRAD_list.append(‘incomplete’)
+	# ----- OVERALL REQUIREMENTS -----
+	if (checkforcomplete('G.P.A. OF ALL COURSES') == 1):
+		GRAD_list.append(‘complete’)
+	else:
+		GRAD_list.append(‘incomplete’)
+	if (checkforcomplete('UNIT REQUIREMENTS') == -1):
+		if (checkforcomplete('UNITS EARNED AT CSUF') == 1):
+			GRAD_list.append(‘complete’)
+		else:
+			GRAD_list.append(‘incomplete’)
+		if (checkforcomplete('CSUF GRADE POINT AVERAGE') == 1):
+			GRAD_list.append(‘complete’)
+		else:
+			GRAD_list.append(‘incomplete’)
+		if (checkforcomplete('UPPER DIVISION UNITS EARNED') == 1):
+			GRAD_list.append(‘complete’)
+		else:
+			GRAD_list.append(‘incomplete’)
+		if (checkforcomplete('RESIDENCE UPPER DIVISION UNITS') == 1):
+			GRAD_list.append(‘complete’)
+		else:
+			GRAD_list.append(‘incomplete’)
+		if (checkforcomplete('MAJOR Residence UPPER DIVISION') == 1):
+			GRAD_list.append(‘complete’)
+		else:
+			GRAD_list.append(‘incomplete’)
+	if (checkforcomplete('TRANSFER INSTITUTION TOTALS') == 1):
+		GRAD_list.append(‘complete’)
+	else:
+		GRAD_list.append(‘incomplete’)
+	if (checkforcomplete('CUMULATIVE NUMBER OF UNITS') == 1):
+		GRAD_list.append(‘complete’)
+	else:
+		GRAD_list.append(‘incomplete’)
+	if (checkforcomplete('CUMULATIVE GRADE POINT AVERAGE') == 1):
+		GRAD_list.append(‘complete’)
+	else:
+		GRAD_list.append(‘incomplete’)
 	
 	parse.close()	
 	parseinprogress()
