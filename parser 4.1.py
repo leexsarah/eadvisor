@@ -133,11 +133,11 @@ take_c =''
 re_OR_list = ['']
 take_list = ['']
 
-GE_list =[‘’]
-NEED_list =[‘’]
-IP_list = [‘’]
-GRAD_list = [‘’]
-STU_info = [‘’]
+GE_list =['']
+NEED_list =['']
+IP_list = ['']
+GRAD_list = ['']
+STU_info = ['']
 
 print('Please Choose Elective Courses from Follwoing List:')
 print('1:MULTIMEDIA & DIGITAL GAME TECHNOLOGIES')
